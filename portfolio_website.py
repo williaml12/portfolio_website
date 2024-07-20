@@ -1,10 +1,9 @@
 import streamlit as st
 import google.generativeai as genai
 
-import openai
-
-api_key = st.secrets["OPENAI_API_KEY"]
-openai.api_key = api_key
+api_key = st.secrets["GOOGLE_API_KEY"]
+genai.configure(api_key=api_key)
+model = genai.GenerativeModel('gemini-1.5-flash')
 
 col1, col2 = st.columns(2)
 
@@ -44,17 +43,12 @@ persona = """
 
 st.title("Murtaza's AI Bot")
 user_question = st.text_input("Ask anything about me")
+# st.text_input("Enter your question here:")
 if st.button("ASK", use_container_width=400):
     prompt = persona + "Here is the question that the user asked: " + user_question
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {"role": "system", "content": persona},
-            {"role": "user", "content": user_question}
-        ],
-        max_tokens=100
-    )
-    st.write(response.choices[0].message['content'].strip())
+    response = model.generate_content(prompt)
+    st.write(response.text)
+
 st.title(" ")
 
 col1, col2 = st.columns(2)
