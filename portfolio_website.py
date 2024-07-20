@@ -46,12 +46,15 @@ st.title("Murtaza's AI Bot")
 user_question = st.text_input("Ask anything about me")
 if st.button("ASK", use_container_width=400):
     prompt = persona + "Here is the question that the user asked: " + user_question
-    response = openai.Completion.create(
-        engine="text-davinci-003",
-        prompt=prompt,
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": persona},
+            {"role": "user", "content": user_question}
+        ],
         max_tokens=100
     )
-    st.write(response.choices[0].text.strip())
+    st.write(response.choices[0].message['content'].strip())
 
 st.title(" ")
 
