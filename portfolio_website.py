@@ -1,9 +1,15 @@
 import streamlit as st
 import google.generativeai as genai
 
-api_key = st.secrets["GOOGLE_API_KEY"]
-genai.configure(api_key=api_key)
-model = genai.GenerativeModel('gemini-1.5-flash')
+import openai
+
+api_key = st.secrets["OPENAI_API_KEY"]
+openai.api_key = api_key
+response = openai.Completion.create(
+    engine="text-davinci-003",
+    prompt="Your prompt here",
+    max_tokens=100
+)
 
 col1, col2 = st.columns(2)
 
