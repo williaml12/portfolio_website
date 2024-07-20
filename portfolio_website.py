@@ -5,11 +5,6 @@ import openai
 
 api_key = st.secrets["OPENAI_API_KEY"]
 openai.api_key = api_key
-response = openai.Completion.create(
-    engine="text-davinci-003",
-    prompt="Your prompt here",
-    max_tokens=100
-)
 
 col1, col2 = st.columns(2)
 
@@ -49,11 +44,14 @@ persona = """
 
 st.title("Murtaza's AI Bot")
 user_question = st.text_input("Ask anything about me")
-# st.text_input("Enter your question here:")
 if st.button("ASK", use_container_width=400):
     prompt = persona + "Here is the question that the user asked: " + user_question
-    response = model.generate_content(prompt)
-    st.write(response.text)
+    response = openai.Completion.create(
+        engine="text-davinci-003",
+        prompt=prompt,
+        max_tokens=100
+    )
+    st.write(response.choices[0].text.strip())
 
 st.title(" ")
 
