@@ -55,7 +55,6 @@ if st.button("ASK", use_container_width=400):
         max_tokens=100
     )
     st.write(response.choices[0].message['content'].strip())
-
 st.title(" ")
 
 col1, col2 = st.columns(2)
