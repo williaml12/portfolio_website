@@ -61,27 +61,23 @@ if "messages" not in st.session_state:
 for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
 
-# User input section
-user_question = st.text_input("Ask anything about me")
+# User input section using chat_input
+if prompt := st.chat_input():
+    if not openai_api_key:
+        st.info("Please add your OpenAI API key to continue.")
+        st.stop()
 
-# If the button is clicked
-if st.button("ASK"):
-    if user_question:
-        # Append the user's question to the messages
-        st.session_state.messages.append({"role": "user", "content": user_question})
+    # Append the user's input to the messages
+    st.session_state.messages.append({"role": "user", "content": prompt})
+    st.chat_message("user").write(prompt)
 
-        # Replace 'model.generate_content' with the actual function to get the response
-        prompt = "Here is the question that the user asked: " + user_question
-        response = model.generate_content(prompt)  # Assuming `model.generate_content` is your function
-        response_text = response.text  # Assuming the response object has a `text` attribute
+    # Generate the response using your model
+    response = model.generate_content(prompt)  # Replace this with your actual model call
+    response_text = response.text  # Assuming the response object has a `text` attribute
 
-        # Append the assistant's response to the messages
-        st.session_state.messages.append({"role": "assistant", "content": response_text})
-
-        # Display the new messages
-        for msg in st.session_state.messages:
-            st.chat_message(msg["role"]).write(msg["content"])
-
+    # Append the assistant's response to the messages
+    st.session_state.messages.append({"role": "assistant", "content": response_text})
+    st.chat_message("assistant").write(response_text)
 
 
 
