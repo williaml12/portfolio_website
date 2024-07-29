@@ -50,7 +50,7 @@ persona = """
 #     st.write(response.text)
 
 
-st.title("💬 Chatbot")
+
 st.caption("🚀 A Streamlit chatbot powered by OpenAI")
 
 # Initialize session state if not already done
@@ -72,7 +72,9 @@ if prompt := st.chat_input():
     st.chat_message("user").write(prompt)
 
     # Generate the response using your model
-    response = model.generate_content(prompt)  # Replace this with your actual model call
+    # Assuming `persona` is a string with some predefined context
+    full_prompt = persona + " Here is the question that the user asked: " + prompt
+    response = model.generate_content(full_prompt)  # Replace this with your actual model call
     response_text = response.text  # Assuming the response object has a `text` attribute
 
     # Append the assistant's response to the messages
