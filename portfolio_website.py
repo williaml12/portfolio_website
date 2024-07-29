@@ -63,7 +63,7 @@ for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
 
 # User input section using chat_input
-if prompt := st.chat_input():
+if prompt := st.chat_input("Enter a prompt here"):
     # Append the user's input to the messages
     st.session_state.messages.append({"role": "user", "content": prompt})
     st.chat_message("user").write(prompt)
