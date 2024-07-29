@@ -57,11 +57,12 @@ if "messages" not in st.session_state:
 
 for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
-
-if prompt := st.chat_input():
+    
+# if st.button("ASK", use_container_width=400):
     prompt = persona + "Here is the question that the user asked: " + user_question
     response = model.generate_content(prompt)
     st.write(response.text)
+
 
 
 
