@@ -59,10 +59,9 @@ for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
 
 if prompt := st.chat_input():
-    if not openai_api_key:
-        st.info("Please add your OpenAI API key to continue.")
-        st.stop()
-
+    prompt = persona + "Here is the question that the user asked: " + user_question
+    response = model.generate_content(prompt)
+    st.write(response.text)
 
 
 
