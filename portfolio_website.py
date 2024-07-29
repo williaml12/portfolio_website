@@ -41,13 +41,36 @@ persona = """
         Murtaza's Github :https://github.com/murtazahassan
         """
 
-st.title("Murtaza's AI Bot")
-user_question = st.text_input("Ask anything about me")
-# st.text_input("Enter your question here:")
-if st.button("ASK", use_container_width=400):
-    prompt = persona + "Here is the question that the user asked: " + user_question
-    response = model.generate_content(prompt)
-    st.write(response.text)
+# st.title("Murtaza's AI Bot")
+# user_question = st.text_input("Ask anything about me")
+# # st.text_input("Enter your question here:")
+# if st.button("ASK", use_container_width=400):
+#     prompt = persona + "Here is the question that the user asked: " + user_question
+#     response = model.generate_content(prompt)
+#     st.write(response.text)
+
+
+st.title("💬 Chatbot")
+st.caption("🚀 A Streamlit chatbot powered by OpenAI")
+if "messages" not in st.session_state:
+    st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
+
+for msg in st.session_state.messages:
+    st.chat_message(msg["role"]).write(msg["content"])
+
+if prompt := st.chat_input():
+    if not openai_api_key:
+        st.info("Please add your OpenAI API key to continue.")
+        st.stop()
+
+
+
+
+
+
+
+
+
 
 st.title(" ")
 
