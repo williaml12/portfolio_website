@@ -1,6 +1,6 @@
 # Python & Computer Vision Starter Bootcamp Project
 
-Build along with Murtaza Hassan on a bootcam project
+Build along with Murtaza Hassan on a bootcamp project: Personal Portfolio Website
 
 Here's what you will learn in the bootcamp: 
 -  Adding Title: How to add titles to your projects.
