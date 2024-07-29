@@ -21,9 +21,7 @@ Here's what you will learn in the bootcamp:
 
 [![Watch the video](https://img.youtube.com/vi/_2UqdX8dcsU&t=6908s/0.jpg)](https://www.youtube.com/watch?v=_2UqdX8dcsU&t=6908s)
 
-
-
-
+[![Day 4](https://img.youtube.com/vi/pe6b095gOSU/0.jpg)](https://www.youtube.com/watch?v=pe6b095gOSU)
 
 ## Run the application
 
