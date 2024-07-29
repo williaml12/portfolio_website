@@ -9,3 +9,6 @@ Here's what you will learn in the bootcamp:
 -  Adding Video: Embedding videos into your projects.
 -  Creating Columns: Structuring your projects with columns.
 -  How to Create Our Portfolio Website: Bringing it all together to build your own portfolio website.
+
+Here's links to the bootcamp:
+- 
