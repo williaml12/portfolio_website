@@ -82,19 +82,7 @@ if st.button("ASK"):
         for msg in st.session_state.messages:
             st.chat_message(msg["role"]).write(msg["content"])
 
-# Chat input section (if you want to use chat_input as well)
-if prompt := st.chat_input():
-    if not openai_api_key:
-        st.info("Please add your OpenAI API key to continue.")
-        st.stop()
-    else:
-        # Handle chat input similar to the button input
-        st.session_state.messages.append({"role": "user", "content": prompt})
-        response = model.generate_content(prompt)
-        response_text = response.text
-        st.session_state.messages.append({"role": "assistant", "content": response_text})
-        for msg in st.session_state.messages:
-            st.chat_message(msg["role"]).write(msg["content"])
+
 
 
 
