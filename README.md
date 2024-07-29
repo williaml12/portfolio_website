@@ -11,12 +11,12 @@ Here's what you will learn in the bootcamp:
 -  Creating Columns: Structuring your projects with columns.
 -  How to Create Our Portfolio Website: Bringing it all together to build your own portfolio website.
 
-## 
+## Getting Started
 Create a Personal AI Portfolio:
 -  Use Python’s Streamlit package and deploy on Streamlit Cloud.
 -  Add AI creatively using any AI model (text, image, video, audio).
 -  No restrictions on using custom HTML and CSS.
 
-  
-Here's links to the bootcamp:
-- 
+Bootcamp Videos:
+https://www.youtube.com/watch?v=_2UqdX8dcsU&t=6908s
+- [![Watch the video](https://img.youtube.com/vi/_2UqdX8dcsU&t=6908s.jpg)](https://www.youtube.com/watch?v=_2UqdX8dcsU&t=6908s)
