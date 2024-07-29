@@ -51,7 +51,7 @@ persona = """
 
 
 
-
+st.title("💬 Chatbot")
 st.caption("🚀 A Streamlit chatbot powered by Google AI")
 
 # Initialize session state if not already done
