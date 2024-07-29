@@ -19,4 +19,4 @@ Here's what you will learn in the bootcamp:
 
 Bootcamp Videos:
 https://www.youtube.com/watch?v=_2UqdX8dcsU&t=6908s
-- [![Watch the video](https://img.youtube.com/vi/_2UqdX8dcsU&t=6908s.jpg)](https://www.youtube.com/watch?v=_2UqdX8dcsU&t=6908s)
+[![Watch the video](https://img.youtube.com/vi/_2UqdX8dcsU&t=6908s/0.jpg)](https://www.youtube.com/watch?v=_2UqdX8dcsU&t=6908s)
