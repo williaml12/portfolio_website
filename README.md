@@ -2,6 +2,7 @@
 
 Build along with Murtaza Hassan on a bootcamp project: Personal Portfolio Website
 
+## How it Works
 Here's what you will learn in the bootcamp: 
 -  Adding Title: How to add titles to your projects.
 -  Adding Images: Incorporating images into your projects.
