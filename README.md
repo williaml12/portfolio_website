@@ -21,3 +21,13 @@ Here's what you will learn in the bootcamp:
 [![Watch the video](https://img.youtube.com/vi/_2UqdX8dcsU&t=6908s/0.jpg)](https://www.youtube.com/watch?v=_2UqdX8dcsU&t=6908s)
 
 [![Watch the video](https://img.youtube.com/vi/pe6b095gOSU/0.jpg)](https://www.youtube.com/watch?v=pe6b095gOSU)
+
+## Run the application
+
+To run the portfolio website locally, follow these steps:
+
+1. Clone this repository.
+2. install required libraries from requirements.txt
+3. Feel free to modify it to your needs!
+
+Or run it here https://murtazahassan01.streamlit.app/
