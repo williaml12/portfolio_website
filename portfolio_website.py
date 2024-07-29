@@ -51,7 +51,8 @@ persona = """
 
 
 
-st.caption("🚀 A Streamlit chatbot powered by OpenAI")
+
+st.caption("🚀 A Streamlit chatbot powered by Google AI")
 
 # Initialize session state if not already done
 if "messages" not in st.session_state:
@@ -63,28 +64,19 @@ for msg in st.session_state.messages:
 
 # User input section using chat_input
 if prompt := st.chat_input():
-    if not openai_api_key:
-        st.info("Please add your OpenAI API key to continue.")
-        st.stop()
-
     # Append the user's input to the messages
     st.session_state.messages.append({"role": "user", "content": prompt})
     st.chat_message("user").write(prompt)
 
-    # Generate the response using your model
+    # Generate the response using your Google AI model
     # Assuming `persona` is a string with some predefined context
     full_prompt = persona + " Here is the question that the user asked: " + prompt
-    response = model.generate_content(full_prompt)  # Replace this with your actual model call
+    response = model.generate_content(full_prompt)  # Replace this with your actual model call to Google AI
     response_text = response.text  # Assuming the response object has a `text` attribute
 
     # Append the assistant's response to the messages
     st.session_state.messages.append({"role": "assistant", "content": response_text})
     st.chat_message("assistant").write(response_text)
-
-
-
-
-
 
 
 
