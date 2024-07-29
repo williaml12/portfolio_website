@@ -41,8 +41,8 @@ persona = """
         Murtaza's Github :https://github.com/murtazahassan
         """
 
-# st.title("Murtaza's AI Bot")
-# user_question = st.text_input("Ask anything about me")
+st.title("Murtaza's AI Bot")
+user_question = st.text_input("Ask anything about me")
 # # st.text_input("Enter your question here:")
 # if st.button("ASK", use_container_width=400):
 #     prompt = persona + "Here is the question that the user asked: " + user_question
@@ -51,7 +51,7 @@ persona = """
 
 
 
-st.title("💬 Chatbot")
+# st.title("💬 Chatbot")
 st.caption("🚀 A Streamlit chatbot powered by Google AI")
 
 # Initialize session state if not already done
