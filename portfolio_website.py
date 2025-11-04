@@ -3,7 +3,8 @@ import google.generativeai as genai
 
 api_key = st.secrets["GOOGLE_API_KEY"]
 genai.configure(api_key=api_key)
-model = genai.GenerativeModel('gemini-1.5-flash')
+# model = genai.GenerativeModel('gemini-1.5-flash')
+model = genai.GenerativeModel("gemini-2.5-flash")
 
 col1, col2 = st.columns(2)
 
@@ -133,3 +134,4 @@ st.subheader(" ")
 st.write("CONTACT")
 st.title("For any inquiries, email at: ")
 st.subheader("contact@murtazahassan.com")
+
