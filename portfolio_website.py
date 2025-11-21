@@ -118,35 +118,24 @@ if "messages" not in st.session_state:
 for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
 
-# # User input section using chat_input
-# if prompt := st.chat_input("Enter a prompt here"):
-
-#     # Append user message
-#     st.session_state.messages.append({"role": "user", "content": prompt})
-#     st.chat_message("user").write(prompt)
-
-#     # Build full prompt for Google AI
-#     full_prompt = persona + " Here is the question that the user asked: " + prompt
-
-#     # AI response
-#     response = model.generate_content(full_prompt)
-#     response_text = response.text
-
-#     # Append bot response
-#     st.session_state.messages.append({"role": "assistant", "content": response_text})
-#     st.chat_message("assistant").write(response_text)
-
-# Chat input
+# User input section using chat_input
 if prompt := st.chat_input("Enter a prompt here"):
+
+    # Append user message
     st.session_state.messages.append({"role": "user", "content": prompt})
     st.chat_message("user").write(prompt)
 
+    # Build full prompt for Google AI
     full_prompt = persona + " Here is the question that the user asked: " + prompt
-    response = model.generate_content(full_prompt)
 
-    reply = response.text
-    st.session_state.messages.append({"role": "assistant", "content": reply})
-    st.chat_message("assistant").write(reply)
+    # AI response
+    response = model.generate_content(full_prompt)
+    response_text = response.text
+
+    # Append bot response
+    st.session_state.messages.append({"role": "assistant", "content": response_text})
+    st.chat_message("assistant").write(response_text)
+
 
 
 
@@ -204,6 +193,7 @@ st.subheader(" ")
 st.write("CONTACT")
 st.title("For any inquiries, email at: ")
 st.subheader("contact@murtazahassan.com")
+
 
 
 
