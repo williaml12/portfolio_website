@@ -6,16 +6,42 @@ genai.configure(api_key=api_key)
 # model = genai.GenerativeModel('gemini-1.5-flash')
 model = genai.GenerativeModel("gemini-2.5-flash")
 
-st.markdown("""
+st.markdown(
+    """
     <script>
-        window.onbeforeunload = function () {
-            window.scrollTo(0, 0);
+    // Disable automatic scroll restoration so we control it
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+
+    // Helper to reliably scroll to top (delay helps with restore timing)
+    function scrollToTopSoon() {
+        setTimeout(function() {
+            try { window.scrollTo(0, 0); } catch(e) {}
+            try { document.documentElement.scrollTop = 0; } catch(e) {}
+            try { document.body.scrollTop = 0; } catch(e) {}
+        }, 50);
+    }
+
+    // Normal page load
+    window.addEventListener('load', scrollToTopSoon);
+
+    // Handles cases where the page is loaded from BFCache (pageshow.persisted)
+    window.addEventListener('pageshow', function(event) {
+        if (event.persisted) {
+            scrollToTopSoon();
         }
-        window.onload = function () {
-            window.scrollTo(0, 0);
-        }
+    });
+
+    // Also clear any hash that might jump the page
+    if (location.hash) {
+        history.replaceState(null, '', location.pathname + location.search);
+    }
     </script>
-""", unsafe_allow_html=True)
+    """,
+    unsafe_allow_html=True,
+)
+
 
 col1, col2 = st.columns(2)
 
@@ -205,6 +231,7 @@ st.subheader(" ")
 st.write("CONTACT")
 st.title("For any inquiries, email at: ")
 st.subheader("contact@murtazahassan.com")
+
 
 
 
