@@ -42,17 +42,70 @@ persona = """
         Murtaza's Github :https://github.com/murtazahassan
         """
 
-st.title("Murtaza's AI Bot")
-# user_question = st.text_input("Ask anything about me")
-# # st.text_input("Enter your question here:")
-# if st.button("ASK", use_container_width=400):
-#     prompt = persona + "Here is the question that the user asked: " + user_question
-#     response = model.generate_content(prompt)
-#     st.write(response.text)
+# st.title("Murtaza's AI Bot")
+# # user_question = st.text_input("Ask anything about me")
+# # # st.text_input("Enter your question here:")
+# # if st.button("ASK", use_container_width=400):
+# #     prompt = persona + "Here is the question that the user asked: " + user_question
+# #     response = model.generate_content(prompt)
+# #     st.write(response.text)
 
 
 
-# st.title("💬 Chatbot")
+# # st.title("💬 Chatbot")
+# st.caption("🚀 A Streamlit chatbot powered by Google AI")
+
+# # Initialize session state if not already done
+# if "messages" not in st.session_state:
+#     st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
+
+# # Display previous messages
+# for msg in st.session_state.messages:
+#     st.chat_message(msg["role"]).write(msg["content"])
+
+# # User input section using chat_input
+# if prompt := st.chat_input("Enter a prompt here"):
+#     # Append the user's input to the messages
+#     st.session_state.messages.append({"role": "user", "content": prompt})
+#     st.chat_message("user").write(prompt)
+
+#     # Generate the response using your Google AI model
+#     # Assuming `persona` is a string with some predefined context
+#     full_prompt = persona + " Here is the question that the user asked: " + prompt
+#     response = model.generate_content(full_prompt)  # Replace this with your actual model call to Google AI
+#     response_text = response.text  # Assuming the response object has a `text` attribute
+
+#     # Append the assistant's response to the messages
+#     st.session_state.messages.append({"role": "assistant", "content": response_text})
+#     st.chat_message("assistant").write(response_text)
+
+
+
+
+
+
+
+
+
+
+# --- Title + Restart button in one row ---
+col1, col2 = st.columns([8, 1])
+
+with col1:
+    st.title("Murtaza's AI Bot")
+
+with col2:
+
+    def clear_chat():
+        st.session_state.messages = [{"role": "assistant", "content": "How can I help you?"}]
+        st.rerun()
+
+    st.button(
+        "Restart",
+        icon=":material/refresh:",
+        on_click=clear_chat
+    )
+
 st.caption("🚀 A Streamlit chatbot powered by Google AI")
 
 # Initialize session state if not already done
@@ -65,19 +118,24 @@ for msg in st.session_state.messages:
 
 # User input section using chat_input
 if prompt := st.chat_input("Enter a prompt here"):
-    # Append the user's input to the messages
+
+    # Append user message
     st.session_state.messages.append({"role": "user", "content": prompt})
     st.chat_message("user").write(prompt)
 
-    # Generate the response using your Google AI model
-    # Assuming `persona` is a string with some predefined context
+    # Build full prompt for Google AI
     full_prompt = persona + " Here is the question that the user asked: " + prompt
-    response = model.generate_content(full_prompt)  # Replace this with your actual model call to Google AI
-    response_text = response.text  # Assuming the response object has a `text` attribute
 
-    # Append the assistant's response to the messages
+    # AI response
+    response = model.generate_content(full_prompt)
+    response_text = response.text
+
+    # Append bot response
     st.session_state.messages.append({"role": "assistant", "content": response_text})
     st.chat_message("assistant").write(response_text)
+
+
+
 
 
 
@@ -134,4 +192,5 @@ st.subheader(" ")
 st.write("CONTACT")
 st.title("For any inquiries, email at: ")
 st.subheader("contact@murtazahassan.com")
+
 
