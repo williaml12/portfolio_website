@@ -1,6 +1,18 @@
 import streamlit as st
 import google.generativeai as genai
 
+st.markdown("""
+    <script>
+        window.onbeforeunload = function () {
+            window.scrollTo(0, 0);
+        }
+        window.onload = function () {
+            window.scrollTo(0, 0);
+        }
+    </script>
+""", unsafe_allow_html=True)
+
+
 api_key = st.secrets["GOOGLE_API_KEY"]
 genai.configure(api_key=api_key)
 # model = genai.GenerativeModel('gemini-1.5-flash')
@@ -194,6 +206,7 @@ st.subheader(" ")
 st.write("CONTACT")
 st.title("For any inquiries, email at: ")
 st.subheader("contact@murtazahassan.com")
+
 
 
 
