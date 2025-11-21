@@ -89,7 +89,7 @@ persona = """
 
 
 # --- Title + Restart button in one row ---
-col1, col2 = st.columns([10, 1])
+col1, col2 = st.columns([6, 1])
 
 with col1:
     st.title("Murtaza's AI Bot")
@@ -192,6 +192,7 @@ st.subheader(" ")
 st.write("CONTACT")
 st.title("For any inquiries, email at: ")
 st.subheader("contact@murtazahassan.com")
+
 
 
 
