@@ -94,7 +94,11 @@ persona = """
 col1, col2 = st.columns([10, 2])
 
 with col1:
-    st.title("Murtaza's AI Bot")
+    # st.title("Murtaza's AI Bot")
+    st.markdown(
+        "<h1 style='margin: 0; padding: 0;'>Murtaza's AI Bot</h1>",
+        unsafe_allow_html=True
+    )
 
 with col2:
     st.markdown('<div class="align-right">', unsafe_allow_html=True)
@@ -194,6 +198,7 @@ st.subheader(" ")
 st.write("CONTACT")
 st.title("For any inquiries, email at: ")
 st.subheader("contact@murtazahassan.com")
+
 
 
 
