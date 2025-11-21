@@ -107,7 +107,7 @@ with col2:
         on_click=clear_chat
     )
 
-st.caption("🚀 A Streamlit chatbot powered by Google AI")
+# st.caption("🚀 A Streamlit chatbot powered by Google AI")
 
 # Initialize session state if not already done
 if "messages" not in st.session_state:
@@ -193,6 +193,7 @@ st.subheader(" ")
 st.write("CONTACT")
 st.title("For any inquiries, email at: ")
 st.subheader("contact@murtazahassan.com")
+
 
 
 
