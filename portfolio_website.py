@@ -97,6 +97,7 @@ with col1:
     st.title("Murtaza's AI Bot")
 
 with col2:
+    st.markdown('<div class="align-right">', unsafe_allow_html=True)
 
     def clear_chat():
         st.session_state.messages = [{"role": "assistant", "content": "How can I help you?"}]
