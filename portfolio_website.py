@@ -43,6 +43,7 @@ persona = """
         """
 
 
+
 # st.title("Murtaza's AI Bot")
 # # user_question = st.text_input("Ask anything about me")
 # # # st.text_input("Enter your question here:")
@@ -90,7 +91,7 @@ persona = """
 
 
 # --- Title + Restart button in one row ---
-col1, col2 = st.columns([5, 2])
+col1, col2 = st.columns([5, 0])
 
 with col1:
     st.title("Murtaza's AI Bot")
@@ -193,6 +194,7 @@ st.subheader(" ")
 st.write("CONTACT")
 st.title("For any inquiries, email at: ")
 st.subheader("contact@murtazahassan.com")
+
 
 
 
