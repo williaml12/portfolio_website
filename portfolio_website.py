@@ -96,7 +96,7 @@ col1, col2 = st.columns([10, 2])
 with col1:
     # st.title("Murtaza's AI Bot")
     st.markdown(
-        "<h1 style='margin: 1; padding: 0;'>Murtaza's AI Bot</h1>",
+        "<h1 style='margin: 1; padding: 1;'>Murtaza's AI Bot</h1>",
         unsafe_allow_html=True
     )
 
@@ -198,6 +198,7 @@ st.subheader(" ")
 st.write("CONTACT")
 st.title("For any inquiries, email at: ")
 st.subheader("contact@murtazahassan.com")
+
 
 
 
