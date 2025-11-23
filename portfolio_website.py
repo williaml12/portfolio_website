@@ -106,12 +106,17 @@ with col2:
     def clear_chat():
         st.session_state.messages = [{"role": "assistant", "content": "How can I help you?"}]
         st.rerun()
+       
+    st.markdown("<div style='display: flex; justify-content: flex-end;'>", unsafe_allow_html=True)
 
     st.button(
         "Restart",
         icon=":material/refresh:",
         on_click=clear_chat
     )
+
+    st.markdown("</div>", unsafe_allow_html=True)
+
 
 st.caption("🚀 A Streamlit chatbot powered by Google AI")
 
@@ -198,6 +203,7 @@ st.subheader(" ")
 st.write("CONTACT")
 st.title("For any inquiries, email at: ")
 st.subheader("contact@murtazahassan.com")
+
 
 
 
