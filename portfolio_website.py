@@ -105,7 +105,7 @@ with col2:
 
     def clear_chat():
         st.session_state.messages = [{"role": "assistant", "content": "How can I help you?"}]
-        st.rerun()
+        # st.rerun()
        
     st.markdown("<div style='display: flex; justify-content: flex-end;'>", unsafe_allow_html=True)
 
@@ -203,6 +203,7 @@ st.subheader(" ")
 st.write("CONTACT")
 st.title("For any inquiries, email at: ")
 st.subheader("contact@murtazahassan.com")
+
 
 
 
