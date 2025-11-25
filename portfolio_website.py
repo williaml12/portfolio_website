@@ -215,6 +215,7 @@ with col2:
 
 
 
+
 st.title(" ")
 
 col1, col2 = st.columns(2)
@@ -265,6 +266,7 @@ st.subheader(" ")
 st.write("CONTACT")
 st.title("For any inquiries, email at: ")
 st.subheader("contact@murtazahassan.com")
+
 
 
 
