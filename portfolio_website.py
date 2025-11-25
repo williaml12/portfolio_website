@@ -157,13 +157,20 @@ persona = """
 
 
 # --- Title only ---
-st.markdown("<h1 style='margin: 0; padding: 0;'>Murtaza's AI Bot</h1>", unsafe_allow_html=True)
+# st.markdown("<h1 style='margin: 1; padding: 1;'>Murtaza's AI Bot</h1>", unsafe_allow_html=True)
 st.caption("🚀 A Streamlit chatbot powered by Google AI")
 
 # ----------------------------
 # ✅ Restart button (WORKS after first prompt)
 # ----------------------------
 col1, col2 = st.columns([10, 2])
+
+with col1:
+    st.markdown(
+        "<h1 style='margin: 0; padding: 0;'>Murtaza's AI Bot</h1>",
+        unsafe_allow_html=True
+    )
+    
 with col2:
 
     if len(st.session_state.messages) > 1:
@@ -260,6 +267,7 @@ st.subheader(" ")
 st.write("CONTACT")
 st.title("For any inquiries, email at: ")
 st.subheader("contact@murtazahassan.com")
+
 
 
 
