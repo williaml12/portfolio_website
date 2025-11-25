@@ -56,6 +56,7 @@ persona = """
 
 
 
+
 # # st.title("💬 Chatbot")
 # st.caption("🚀 A Streamlit chatbot powered by Google AI")
 
@@ -160,6 +161,24 @@ persona = """
 st.markdown("<h1 style='margin: 1; padding: 1;'>Murtaza's AI Bot</h1>", unsafe_allow_html=True)
 st.caption("🚀 A Streamlit chatbot powered by Google AI")
 
+# ----------------------------
+# ✅ Restart button (WORKS after first prompt)
+# ----------------------------
+col1, col2 = st.columns([10, 2])
+with col2:
+
+    if len(st.session_state.messages) > 1:
+
+        def clear_chat():
+            st.session_state.messages = [{"role": "assistant", "content": "How can I help you?"}]
+            st.rerun()
+
+        st.button(
+            "Restart",
+            icon=":material/refresh:",
+            on_click=clear_chat
+        )
+        
 # Initialize messages
 if "messages" not in st.session_state:
     st.session_state.messages = [{"role": "assistant", "content": "How can I help you?"}]
@@ -184,23 +203,7 @@ if prompt := st.chat_input("Enter a prompt here"):
     # 🔥 critical: rerun after new message so header sees updated state
     st.rerun()
 
-# ----------------------------
-# ✅ Restart button (WORKS after first prompt)
-# ----------------------------
-col1, col2 = st.columns([10, 2])
-with col2:
 
-    if len(st.session_state.messages) > 1:
-
-        def clear_chat():
-            st.session_state.messages = [{"role": "assistant", "content": "How can I help you?"}]
-            st.rerun()
-
-        st.button(
-            "Restart",
-            icon=":material/refresh:",
-            on_click=clear_chat
-        )
 
 
 
@@ -266,6 +269,7 @@ st.subheader(" ")
 st.write("CONTACT")
 st.title("For any inquiries, email at: ")
 st.subheader("contact@murtazahassan.com")
+
 
 
 
