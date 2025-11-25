@@ -84,63 +84,54 @@ persona = """
 
 
 
-# --- Title + Restart button in one row ---
-col1, col2 = st.columns([10, 2])
-
-with col1:
-    # st.title("Murtaza's AI Bot")
-    st.markdown(
-        "<h1 style='margin: 1; padding: 1;'>Murtaza's AI Bot</h1>",
-        unsafe_allow_html=True
-    )
-
-with col2:
-    # st.markdown('<div class="align-right">', unsafe_allow_html=True)
-
-    def clear_chat():
-        st.session_state.messages = [{"role": "assistant", "content": "How can I help you?"}]
-        # st.rerun()
-       
-    st.markdown("<div style='display: flex; justify-content: flex-end;'>", unsafe_allow_html=True)
-
-    st.button(
-        "Restart",
-        icon=":material/refresh:",
-        on_click=clear_chat
-        )
-
-    st.markdown("</div>", unsafe_allow_html=True)
-
-
+# --- Title only ---
+st.markdown("<h1 style='margin: 1; padding: 1;'>Murtaza's AI Bot</h1>", unsafe_allow_html=True)
 st.caption("🚀 A Streamlit chatbot powered by Google AI")
 
-# Initialize session state if not already done
-if "messages" not in st.session_state:
-    st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
 
-# Display previous messages
+# Initialize messages
+if "messages" not in st.session_state:
+    st.session_state.messages = [{"role": "assistant", "content": "How can I help you?"}]
+
+
+# Display messages
 for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
 
-# User input section using chat_input
-if prompt := st.chat_input("Enter a prompt here"):
 
-    # Append user message
+# User input
+prompt = st.chat_input("Enter a prompt here")
+
+if prompt:
     st.session_state.messages.append({"role": "user", "content": prompt})
     st.chat_message("user").write(prompt)
 
-    # Build full prompt for Google AI
     full_prompt = persona + " Here is the question that the user asked: " + prompt
-
-    # AI response
     response = model.generate_content(full_prompt)
     response_text = response.text
 
-    # Append bot response
     st.session_state.messages.append({"role": "assistant", "content": response_text})
     st.chat_message("assistant").write(response_text)
 
 
+# ----------------------------
+# ✅ Restart button (NOW works)
+# ----------------------------
+col1, col2 = st.columns([10, 2])
+with col2:
+
+    # Only show restart button after user sends first prompt
+    if len(st.session_state.messages) > 1:
+
+        def clear_chat():
+            st.session_state.messages = [{"role": "assistant", "content": "How can I help you?"}]
+            st.rerun()
+
+        st.button(
+            "Restart",
+            icon=":material/refresh:",
+            on_click=clear_chat
+        )
 
 
 
@@ -201,6 +192,7 @@ st.subheader(" ")
 st.write("CONTACT")
 st.title("For any inquiries, email at: ")
 st.subheader("contact@murtazahassan.com")
+
 
 
 
