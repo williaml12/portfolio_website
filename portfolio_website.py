@@ -165,9 +165,17 @@ st.caption("🚀 A Streamlit chatbot powered by Google AI")
 # ----------------------------
 col1, col2 = st.columns([10, 2])
 
+# Initialize messages
+if "messages" not in st.session_state:
+    st.session_state.messages = [{"role": "assistant", "content": "How can I help you?"}]
+
+# Display messages
+for msg in st.session_state.messages:
+    st.chat_message(msg["role"]).write(msg["content"])
+    
 with col1:
     st.markdown(
-        "<h1 style='margin: 1; padding: 1;'>Murtaza's AI Bot</h1>",
+        "<h1 style='margin: 0; padding: 0;'>Murtaza's AI Bot</h1>",
         unsafe_allow_html=True
     )
     
@@ -185,13 +193,8 @@ with col2:
             on_click=clear_chat
         )
         
-# Initialize messages
-if "messages" not in st.session_state:
-    st.session_state.messages = [{"role": "assistant", "content": "How can I help you?"}]
 
-# Display messages
-for msg in st.session_state.messages:
-    st.chat_message(msg["role"]).write(msg["content"])
+
 
 # User input
 if prompt := st.chat_input("Enter a prompt here"):
@@ -267,6 +270,7 @@ st.subheader(" ")
 st.write("CONTACT")
 st.title("For any inquiries, email at: ")
 st.subheader("contact@murtazahassan.com")
+
 
 
 
