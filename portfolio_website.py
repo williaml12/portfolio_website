@@ -157,7 +157,7 @@ persona = """
 
 
 # --- Title only ---
-st.markdown("<h1 style='margin: 1; padding: 1;'>Murtaza's AI Bot</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='margin: 0; padding: 0;'>Murtaza's AI Bot</h1>", unsafe_allow_html=True)
 st.caption("🚀 A Streamlit chatbot powered by Google AI")
 
 # ----------------------------
@@ -260,6 +260,7 @@ st.subheader(" ")
 st.write("CONTACT")
 st.title("For any inquiries, email at: ")
 st.subheader("contact@murtazahassan.com")
+
 
 
 
