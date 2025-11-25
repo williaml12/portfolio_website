@@ -44,6 +44,8 @@ persona = """
 
 
 
+
+
 # st.title("Murtaza's AI Bot")
 # # user_question = st.text_input("Ask anything about me")
 # # # st.text_input("Enter your question here:")
@@ -158,13 +160,36 @@ persona = """
 st.markdown("<h1 style='margin: 1; padding: 1;'>Murtaza's AI Bot</h1>", unsafe_allow_html=True)
 st.caption("🚀 A Streamlit chatbot powered by Google AI")
 
+# Initialize messages
+if "messages" not in st.session_state:
+    st.session_state.messages = [{"role": "assistant", "content": "How can I help you?"}]
+
+# Display messages
+for msg in st.session_state.messages:
+    st.chat_message(msg["role"]).write(msg["content"])
+
+# User input
+if prompt := st.chat_input("Enter a prompt here"):
+
+    st.session_state.messages.append({"role": "user", "content": prompt})
+    st.chat_message("user").write(prompt)
+
+    full_prompt = persona + " Here is the question that the user asked: " + prompt
+    response = model.generate_content(full_prompt)
+    response_text = response.text
+
+    st.session_state.messages.append({"role": "assistant", "content": response_text})
+    st.chat_message("assistant").write(response_text)
+
+    # 🔥 critical: rerun after new message so header sees updated state
+    st.rerun()
+
 # ----------------------------
-# ✅ Restart button (NOW works)
+# ✅ Restart button (WORKS after first prompt)
 # ----------------------------
 col1, col2 = st.columns([10, 2])
 with col2:
 
-    # Only show restart button after user sends first prompt
     if len(st.session_state.messages) > 1:
 
         def clear_chat():
@@ -175,31 +200,8 @@ with col2:
             "Restart",
             icon=":material/refresh:",
             on_click=clear_chat
-        ) 
-        
-# Initialize messages
-if "messages" not in st.session_state:
-    st.session_state.messages = [{"role": "assistant", "content": "How can I help you?"}]
+        )
 
-
-# Display messages
-for msg in st.session_state.messages:
-    st.chat_message(msg["role"]).write(msg["content"])
-
-
-# User input
-prompt = st.chat_input("Enter a prompt here")
-
-if prompt:
-    st.session_state.messages.append({"role": "user", "content": prompt})
-    st.chat_message("user").write(prompt)
-
-    full_prompt = persona + " Here is the question that the user asked: " + prompt
-    response = model.generate_content(full_prompt)
-    response_text = response.text
-
-    st.session_state.messages.append({"role": "assistant", "content": response_text})
-    st.chat_message("assistant").write(response_text)
 
 
 
@@ -263,6 +265,7 @@ st.subheader(" ")
 st.write("CONTACT")
 st.title("For any inquiries, email at: ")
 st.subheader("contact@murtazahassan.com")
+
 
 
 
