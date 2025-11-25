@@ -87,7 +87,9 @@ persona = """
 
 
 
-
+# Initialize show_restart flag
+if "show_restart" not in st.session_state:
+    st.session_state.show_restart = False
 
 
 # --- Title + Restart button in one row ---
@@ -105,15 +107,17 @@ with col2:
 
     def clear_chat():
         st.session_state.messages = [{"role": "assistant", "content": "How can I help you?"}]
+        st.session_state.show_restart = False
         # st.rerun()
        
     st.markdown("<div style='display: flex; justify-content: flex-end;'>", unsafe_allow_html=True)
 
-    st.button(
-        "Restart",
-        icon=":material/refresh:",
-        on_click=clear_chat
-    )
+    if st.session_state.get("show_restart", False):
+        st.button(
+            "Restart",
+            icon=":material/refresh:",
+            on_click=clear_chat
+        )
 
     st.markdown("</div>", unsafe_allow_html=True)
 
@@ -130,6 +134,9 @@ for msg in st.session_state.messages:
 
 # User input section using chat_input
 if prompt := st.chat_input("Enter a prompt here"):
+
+    st.session_state.show_restart = True   # <-- show restart button now
+
 
     # Append user message
     st.session_state.messages.append({"role": "user", "content": prompt})
@@ -203,6 +210,7 @@ st.subheader(" ")
 st.write("CONTACT")
 st.title("For any inquiries, email at: ")
 st.subheader("contact@murtazahassan.com")
+
 
 
 
